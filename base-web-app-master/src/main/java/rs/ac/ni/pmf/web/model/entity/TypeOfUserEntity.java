@@ -30,12 +30,12 @@ public class TypeOfUserEntity {
 	
 	private String name_type;
 	
-/*	
+	
 	@OneToMany(
 		mappedBy = "type_user",
 		cascade = CascadeType.ALL,
 		orphanRemoval = true,
 		fetch = FetchType.LAZY)
-	private List<UserEntity> users;*/
+	private List<UserEntity> users;
 	
 }

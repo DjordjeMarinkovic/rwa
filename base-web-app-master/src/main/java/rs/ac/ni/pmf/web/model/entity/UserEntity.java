@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -38,11 +39,11 @@ public class UserEntity {
 	private String password;
 	private int year_of_study;
 
-	/*
+	
 	@ManyToOne(fetch= FetchType.LAZY)
 	@JoinColumn(name="type_user_id")
-	private TypeOfUsers type_user;
-	*/
+	private TypeOfUserEntity type_user;
+	
 	
 	@OneToMany(fetch= FetchType.LAZY,
 			mappedBy = "userProfessor")

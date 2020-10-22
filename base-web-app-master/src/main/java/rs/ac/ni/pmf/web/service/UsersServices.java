@@ -10,8 +10,10 @@ import rs.ac.ni.pmf.web.exception.DuplicateResourceException;
 import rs.ac.ni.pmf.web.exception.ErrorInfo.ResourceType;
 import rs.ac.ni.pmf.web.exception.ResourceNotFoundException;
 import rs.ac.ni.pmf.web.model.api.UserDTO;
+import rs.ac.ni.pmf.web.model.entity.TypeOfUserEntity;
 import rs.ac.ni.pmf.web.model.entity.UserEntity;
 import rs.ac.ni.pmf.web.model.mapper.UsersMapper;
+import rs.ac.ni.pmf.web.repository.TypesOfUsersRepository;
 import rs.ac.ni.pmf.web.repository.UsersRepository;
 
 @Service
@@ -19,16 +21,23 @@ import rs.ac.ni.pmf.web.repository.UsersRepository;
 public class UsersServices {
 	
 	private final UsersMapper usersMapper;
-	private final UsersRepository usersRepository;
 	
-	public UserDTO addUser(final UserDTO userDto) throws DuplicateResourceException {
+	private final UsersRepository usersRepository;
+	private final TypesOfUsersRepository typeRepository;
+	
+	
+	public UserDTO addUser(final UserDTO userDto) throws DuplicateResourceException, ResourceNotFoundException {
 		final int id = userDto.getId();
+		final int type_id= userDto.getType_user();
 
 		if( id == 0 || usersRepository.existsById(id)) {
 			throw new DuplicateResourceException(ResourceType.USER, "User with this id: '" + id + "' already exists" );
 		}
+		
+		final TypeOfUserEntity typeEntity= typeRepository.findById(type_id).orElseThrow(
+				()-> new ResourceNotFoundException(ResourceType.TYPEOFUSER, "User with id:" + type_id + "not exists"));
 
-		final UserEntity userEntity = usersMapper.toEntity(userDto);
+		final UserEntity userEntity = usersMapper.toEntity(userDto, typeEntity);
 		final UserEntity savedEntity = usersRepository.save(userEntity);
 		return usersMapper.toDto(savedEntity);
 	}

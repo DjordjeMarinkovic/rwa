@@ -39,6 +39,7 @@ public class ProjectEntity {
 	private String title;
 	
 	private java.sql.Date start_date;
+	private java.sql.Date final_date;
 	
 	private int number_of_bods;
 	private int final_grade;

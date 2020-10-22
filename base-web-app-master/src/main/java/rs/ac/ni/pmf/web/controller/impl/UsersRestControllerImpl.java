@@ -19,7 +19,7 @@ public class UsersRestControllerImpl implements UsersRestController {
 	private final UsersServices userService;
 
 	@Override
-	public UserDTO addUser(UserDTO user)throws DuplicateResourceException {
+	public UserDTO addUser(UserDTO user)throws DuplicateResourceException, ResourceNotFoundException {
 		// TODO Auto-generated method stub
 		return userService.addUser(user);
 	}

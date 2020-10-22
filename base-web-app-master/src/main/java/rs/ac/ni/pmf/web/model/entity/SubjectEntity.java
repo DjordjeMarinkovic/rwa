@@ -46,7 +46,6 @@ public class SubjectEntity {
 			fetch = FetchType.LAZY)
 	private List<ProjectEntity> projects;
 	
-	@ManyToMany(/*mappedBy = "subject_students"*/)
-	//@JoinTable(name = "subject_id")
+	@ManyToMany(mappedBy = "subject_students")
 	private List<UserEntity> users;
 }

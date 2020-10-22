@@ -26,7 +26,7 @@ public interface UsersRestController {
 	
 	@ResponseStatus(code = HttpStatus.CREATED)
 	@RequestMapping(method = RequestMethod.POST, path = "", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	UserDTO addUser(@RequestBody UserDTO user) throws DuplicateResourceException;
+	UserDTO addUser(@RequestBody UserDTO user) throws DuplicateResourceException, ResourceNotFoundException;
 	
 	@RequestMapping(method = RequestMethod.DELETE, path="/{id}")
 	void deleteUser(@PathVariable(name="id")int id) throws ResourceNotFoundException;

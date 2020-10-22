@@ -20,5 +20,6 @@ public class UserDTO {
 	private String username;
 	private String password;
 	private int year_of_study;
+	private int type_user;
 	
 }

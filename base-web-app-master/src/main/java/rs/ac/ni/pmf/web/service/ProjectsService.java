@@ -118,6 +118,7 @@ public class ProjectsService {
 
 		projectEntity.setTitle(projectDTO.getTitle());
 		projectEntity.setStart_date(projectDTO.getStart_date());
+		projectEntity.setFinal_date(projectDTO.getFinal_date());
 		projectEntity.setNumber_of_bods(projectDTO.getNumber_of_bods());
 		projectEntity.setFinal_grade(projectDTO.getFinal_grade());
 		projectEntity.setFinal_comment(projectDTO.getFinal_comment());
